@@ -1,5 +1,5 @@
 import os
-from main import logger
+from one_task import logger
 import datetime
 
 def logger(path):
