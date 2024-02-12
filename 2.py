@@ -1,12 +1,16 @@
 import os
-
+from main import logger
+import datetime
 
 def logger(path):
-    ...
-
     def __logger(old_function):
         def new_function(*args, **kwargs):
-            ...
+            datetime_now = datetime.datetime.now()
+            file = open(path, mode='a', encoding='utf-8')
+            result = old_function(*args, **kwargs)
+            file.write(f"{datetime_now} {str(old_function.__name__)} {args} {kwargs} {result}\n")
+            file.close()
+            return result
 
         return new_function
 
